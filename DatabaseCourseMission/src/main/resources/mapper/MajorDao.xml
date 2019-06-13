@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.MajorDao">
+	<select id="findAllMajor" resultType="com.dc.lwm.entity.Major">
+		SELECT *
+		FROM major
+	</select>
+	<select id="queryById" parameterType="long"
+		resultType="com.dc.lwm.entity.Major">
+		SELECT *
+		FROM major
+		WHERE major_id=#{majorId}
+	</select>
+	<select id="queryByName" parameterType="String"
+		resultType="com.dc.lwm.entity.Major">
+		SELECT *
+		FROM major
+		WHERE major_name=#{majorName}
+	</select>
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM major
+		WHERE
+		major_id=#{majorId}
+	</delete>
+	<update id="modifyById" parameterType="com.dc.lwm.entity.Major">
+		UPDATE major
+		<set>
+			major_name=#{majorName}
+			xueyuan_name=#{xueyuanName}
+		</set>
+		WHERE major_id=#{majorId}
+	</update>
+	<insert id="insertMajor "
+		parameterType="com.dc.lwm.entity.Major">
+		INSERT INTO major(major_id,major_name,xueyuan_name)
+		VALUES(#{majorId},#{majorName},#{xueyuanName})
+	</insert>
+</mapper>

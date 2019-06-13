@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.StudentDao">
+	<select id="queryByStuId" parameterType="long"
+		resultType="com.dc.lwm.entity.Student">
+		SELECT *
+		FROM student
+		WHERE stu_id=#{stuId}
+	</select>
+	<update id="modifyStudent"
+		parameterType="com.dc.lwm.entity.Student">
+		UPDATE student
+		<set>
+			idcode=#{idCode},
+			major_id=#{majorId},
+			class_id=#{classId},
+			stu_name=#{stuName},
+			gender=#{gender},
+			nation=#{nation},
+			laojia=#{laojia},
+			birthday=#{birthday},
+			stu_address=#{stuAddress}
+		</set>
+		WHERE stu_id=#{stuId}
+	</update>
+	<delete id="deleteStudent" parameterType="long">
+		DELET FROM student
+		WHERE stu_id=#{stuId}
+	</delete>
+	<insert id="insertStudent"
+		parameterType="com.dc.lwm.entity.Student">
+		INSERT INTO
+		student(stu_id,idcode,major_id,class_id,stu_name,gender,nation,laojia,stu_address,birthday)
+		VALUES(#{stuId},#{idCode},#{majorId},#{classId},#{stuName},#{gender},#{nation},#{laojia},#{stuAddress},#{birthday})
+
+	</insert>
+	<select id="queryByClass" parameterType="long"
+		resultType="com.dc.lwm.entity.Student">
+		SELECT * FROM student
+		WHERE class_id=#{classId}
+		ORDER BY
+		stu_id
+	</select>
+	<select id="queryByMajor" parameterType="long"
+		resultType="com.dc.lwm.entity.Student">
+		SELECT * FROM student
+		WHERE major_id=#{MajorId}
+		ORDER BY
+		stu_id
+	</select>
+	<select id="findAllStudents"
+		resultType="com.dc.lwm.entity.Student">
+		SELECT * FROM student
+		ORDER BY stu_id
+	</select>
+</mapper>

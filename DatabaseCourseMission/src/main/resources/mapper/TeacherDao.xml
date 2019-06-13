@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.TeacherDao">
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM teacher
+		WHERE
+		tea_id=#{teaId}
+	</delete>
+	<insert id="inserTeacher"
+		parameterType="com.dc.lwm.entity.Teacher">
+		INSERT INTO teacher( tea_id,idcode,
+		major_id,tea_name,gender, nation,
+		laojia, birthday)
+		VALUES(#{teaId},#{idCode},#{majorId},#{teaName},#{gender},#{nation},#{laojia},#{birthday})
+	</insert>
+	<select id="findAllTeacher"
+		resultType="com.dc.lwm.entity.Teacher">
+		SELECT *
+		FROM teacher
+		ORDER BY tea_id
+	</select>
+	<select id="queryById" parameterType="long"
+		resultType="com.dc.lwm.entity.Teacher">
+		SELECT *
+		FROM TEACHER
+		WHERE tea_id=#{teaId}
+	</select>
+	<select id="queryByMajor" parameterType="long"
+		resultType="com.dc.lwm.entity.Teacher">
+		SELECT *
+		FROM TEACHER
+		WHERE major_id=#{majorId}
+	</select>
+	<update id="modifyById"
+		parameterType="com.dc.lwm.entity.Teacher">
+		UPDATE teacher
+		<set>
+			idcode=#{idCode},
+			major_id=#{majorId},
+			tea_name=#{teaName},
+			gender=#{gender},
+			nation=#{nation},
+			laojia=#{laojia},
+			birthday=#{birthday},
+		</set>
+		WHERE tea_id=#{teaId}
+	</update>
+</mapper>

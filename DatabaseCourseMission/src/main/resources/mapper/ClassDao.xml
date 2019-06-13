@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.ClassDao">
+	<select id="findAllClass" resultType="com.dc.lwm.entity.Class">
+		SELECT *
+		FROM class
+	</select>
+	<select id="queryById" parameterType="long"
+		resultType="com.dc.lwm.entity.Class">
+		SELECT *
+		FROM class
+		WHERE class_id=#{classId}
+	</select>
+	<select id="queryByName" parameterType="String"
+		resultType="com.dc.lwm.entity.Class">
+		SELECT *
+		FROM class
+		WHERE class_name=#{className}
+	</select>
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM class
+		WHERE
+		class_id=#{classId}
+	</delete>
+	<insert id="insertClass" parameterType="com.dc.lwm.entity.Class">
+		INSERT INTO
+		class(class_id, major_id, banzhuren_id class_name)
+		VALUES(#{classId},#{majorId},#{banzhurenId},#{className})
+	</insert>
+	<update id="modifyClass" parameterType="com.dc.lwm.entity.Class">
+		UPDATE class
+		<set>
+			major_id=#{majorId},
+			banzhuren_id=#{banzhurenId},
+			class_name=#{className}
+		</set>
+		WHERE class_id=#{classId}
+	</update>
+</mapper>

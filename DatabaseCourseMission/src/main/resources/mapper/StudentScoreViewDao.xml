@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.StudentScoreView">
+	<select id="findAll"
+		resultType="com.dc.lwm.entity.StudentScoreView">
+		SELECT *
+		FROM studentscoreview
+	</select>
+	<select id="queryById"
+		resultType="com.dc.lwm.entity.StudentScoreView">
+		SELECT *
+		FROM studentscoreview
+		WHERE stu_id=#{stuId}
+	</select>
+	<select id="queryByTeaId"
+		resultType="com.dc.lwm.entity.StudentScoreView">
+		SELECT *
+		FROM studentscoreview
+		WHERE tea_id=#{teaId}
+	</select>
+	<select id="queryByTeaIdCourseId"
+		resultType="com.dc.lwm.entity.StudentScoreView">
+		SELECT *
+		FROM studentscoreview
+		WHERE tea_id=#{teaId} AND
+		course_id=#{courseId}
+	</select>
+	<select id="queryByStuIdCourseId"
+		resultType="com.dc.lwm.entity.StudentScoreView">
+		SELECT *
+		FROM studentscoreview
+		WHERE stu_id=#{stuId} AND
+		course_id=#{courseId}
+	</select>
+</mapper>

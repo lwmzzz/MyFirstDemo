@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.lwm.dao.StudentState">
+	<select id="findAllStudentState"
+		resultType="com.dc.lwm.entity.StudentState">
+		SELECT *
+		FROM studentstate
+	</select>
+	<select id="queryById" parameterType="long"
+		resultType="com.dc.lwm.entity.StudentState">
+		SELECT *
+		FROM studentstate
+		WHERE stu_id=#{stuId}
+	</select>
+	<select id="queryByState" parameterType="String"
+		resultType="com.dc.lwm.entity.StudentState">
+		SELECT *
+		FROM studentstate
+		WHERE stu_state=#{stuState}
+	</select>
+	<update id="modifyStudentState" parameterType="String">
+		UPDATE studentstate
+		<set>
+			stu_state=#{stuState}
+		</set>
+		stu_id=#{stuId}
+	</update>
+</mapper>
